@@ -23,6 +23,7 @@ import org.springframework.kafka.listener.*;
 import org.springframework.kafka.support.ExponentialBackOffWithMaxRetries;
 import org.springframework.util.backoff.FixedBackOff;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -98,7 +99,7 @@ public class LibraryEventsConsumerConfig {
         /**
          * Just the Custom Error Handler
          */
-       // var defaultErrorHandler =  new DefaultErrorHandler(fixedBackOff);
+        // var defaultErrorHandler =  new DefaultErrorHandler(fixedBackOff);
 
         /**
          * Error Handler with the BackOff, Exceptions to Ignore, RetryListener
@@ -134,4 +135,5 @@ public class LibraryEventsConsumerConfig {
         factory.setCommonErrorHandler(errorHandler());
         return factory;
     }
+
 }

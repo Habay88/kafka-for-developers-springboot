@@ -6,6 +6,10 @@ server:
 topics:
   retry: 'library-events.RETRY'
   dlt: 'library-events.DLT'
+management:
+  endpoint:
+    health:
+      show-details: always
 
 ---
 spring:
