@@ -23,6 +23,7 @@ import scala.Int;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.when;
 
@@ -57,7 +58,8 @@ public class LibraryEventProducerUnitTest {
         when(kafkaTemplate.send(isA(ProducerRecord.class))).thenReturn(future);
         //when
 
-        assertThrows(Exception.class, ()->eventProducer.sendLibraryEvent_Approach2(libraryEvent).get());
+        var exception = assertThrows(Exception.class, ()->eventProducer.sendLibraryEvent_Approach2(libraryEvent).get());
+        assertTrue(exception.getMessage().contains("Exception Calling Kafka"));
 
     }
 
